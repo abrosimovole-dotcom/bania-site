@@ -5,16 +5,11 @@
 <title>Баня на колесах</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
     font-family: Arial;
     color: white;
-
     background:
         radial-gradient(circle at 10% 20%, #003d1f, transparent 40%),
         radial-gradient(circle at 80% 10%, #022d18, transparent 50%),
@@ -28,13 +23,10 @@ header {
     background:
         linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
         url('7c3aea83-8fba-43a3-87b0-8109d30dcd21.avif') no-repeat center/cover;
-
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-
-    animation: fadeIn 2s ease;
 }
 
 header h1 {
@@ -42,46 +34,23 @@ header h1 {
     background: rgba(0,0,0,0.5);
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0,255,120,0.2);
+}
+
+/* КНОПКА ВЫХОДА */
+.logout {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: crimson;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 /* СЕКЦИИ */
 .section {
-    padding: 70px 20px;
+    padding: 60px 20px;
     text-align: center;
-    animation: fadeUp 1.5s ease;
-}
-
-/* ТЕКСТ */
-.desc {
-    max-width: 700px;
-    margin: auto;
-    line-height: 1.6;
-    font-size: 18px;
-    opacity: 0.9;
-}
-
-/* ЦЕНЫ */
-.pricing {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
-
-.card {
-    background: rgba(255,255,255,0.05);
-    padding: 25px;
-    border-radius: 20px;
-    width: 200px;
-    backdrop-filter: blur(10px);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0,255,100,0.3);
 }
 
 /* ФОРМА */
@@ -90,7 +59,6 @@ header h1 {
     background: rgba(255,255,255,0.05);
     padding: 25px;
     border-radius: 20px;
-    backdrop-filter: blur(10px);
     display: inline-block;
 }
 
@@ -102,22 +70,14 @@ input, textarea {
     border: none;
 }
 
-/* КНОПКА */
 button {
     padding: 12px 25px;
-    border-radius: 12px;
+    border-radius: 10px;
     border: none;
-    background: linear-gradient(45deg, #00ff88, #00aa55);
-    font-weight: bold;
+    background: #00aa55;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-button:hover {
-    transform: scale(1.05);
-}
-
-/* СПИСОК */
 .booking-list {
     display: flex;
     flex-direction: column;
@@ -125,12 +85,11 @@ button:hover {
 }
 
 .booking-item {
-    width: 320px;
+    width: 300px;
     background: rgba(255,255,255,0.05);
     margin: 10px;
     padding: 15px;
     border-radius: 15px;
-    backdrop-filter: blur(8px);
 }
 
 .delete {
@@ -138,70 +97,35 @@ button:hover {
     margin-top: 10px;
 }
 
-/* УВЕДОМЛЕНИЕ */
+/* уведомление */
 .toast {
     position: fixed;
     bottom: 20px;
     right: 20px;
     background: #00aa55;
-    padding: 15px 20px;
-    border-radius: 12px;
+    padding: 15px;
+    border-radius: 10px;
     display: none;
-}
-
-/* АНИМАЦИИ */
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- 🔐 ПРОВЕРКА ВХОДА -->
+<script>
+let user = localStorage.getItem("currentUser");
+
+if (!user) {
+    window.location.href = "index.html";
+}
+</script>
+
+<div class="logout" onclick="logout()">Выйти</div>
+
 <header>
-    <h1>🔥 Баня, которая приезжает к тебе 🔥</h1>
+    <h1>🔥 Баня на колесах 🔥</h1>
 </header>
-
-<section class="section">
-    <h2>Почему это круто?</h2>
-    <p class="desc">
-        Наша баня на колесах — это настоящий уровень отдыха.  
-        Мы привозим горячий пар, уют и атмосферу прямо к тебе, куда угодно: на дачу, природу или к дому.  
-        Это идеальный способ расслабиться, провести время с друзьями и получить максимум удовольствия.  
-        Удобно, быстро, атмосферно и самое главное — намного дешевле, чем стационарные бани.
-    </p>
-</section>
-
-<section class="section">
-    <h2>💰 Цены</h2>
-
-    <div class="pricing">
-        <div class="card">
-            <h3>1 час</h3>
-            <h2>500 грн</h2>
-        </div>
-        <div class="card">
-            <h3>3 часа</h3>
-            <h2>850 грн</h2>
-        </div>
-        <div class="card">
-            <h3>5 часов</h3>
-            <h2>1200 грн</h2>
-        </div>
-    </div>
-</section>
 
 <section class="section">
     <h2>📅 Работаем</h2>
@@ -223,7 +147,10 @@ button:hover {
 <div id="toast" class="toast"></div>
 
 <script>
-let user = localStorage.getItem("currentUser") || "guest";
+function logout() {
+    localStorage.removeItem("currentUser");
+    window.location.href = "index.html";
+}
 
 function showToast(text) {
     let t = document.getElementById("toast");
